@@ -21,10 +21,10 @@ The `[,main]` tag is optional, and should only be specified for a single service
 All services that are run this way will be hosted on your webserver at the `/<your-service-name-here>` end point.
 
 ```
-mywebservice:
-  image: gjon/mywebservice
+helloworld-web:
+  image: gjon/helloworld-web
   environment:
-    - SERVICE_NAME=mywebservice
+    - SERVICE_NAME=helloworld
     - SERVICE_TAGS=web,main
   ports:
     - "80"
