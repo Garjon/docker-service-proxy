@@ -1,0 +1,41 @@
+consul:
+  image: gliderlabs/consul-server
+  restart: always
+  command: -bootstrap
+  net: "host"
+  ports:
+    - "8500:8500"
+    - "8600:53/udp"
+
+registrator:
+  image: gliderlabs/registrator
+  restart: always
+  command: consul://localhost:8500
+  net: "host"
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock
+
+nginx_reverse_proxy:
+  build: ./nginx_reverse_proxy
+  restart: always
+  net: "host"
+  ports:
+    - "80:80"
+  environment:
+    - CONSUL=localhost:8500
+  volumes:
+    - ./nginx_reverse_proxy/active-logs:/var/log/nginx
+    - ./nginx_reverse_proxy/active-conf:/etc/nginx/conf.d
+
+###
+## Example usage
+###
+
+#helloworld-web:
+#  image: gjon/helloworld-web
+#  restart: always
+#  environment:
+#    - SERVICE_NAME=helloworld
+#    - SERVICE_TAGS=web,main
+#  ports:
+#    - "80"
