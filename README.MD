@@ -1,7 +1,7 @@
 ![License MIT][1]
 
 ### What's this all about?
-This is the basis for automating the proxying of Docker web services. It uses a combination of Docker, Consul, Registrator and Nginx to monitor, publish and reverse proxy all running Docker services that have been tagged as "web" services.
+This is the basis for automating the proxying of Docker web services. It uses a combination of Docker, Registrator, Consul, Consul Template and Nginx to monitor, publish and reverse proxy all running Docker services that have been tagged as "web" services.
 
 ### Usage
 #### The easy way
@@ -18,7 +18,7 @@ There are a couple of must haves, but the rest is up to you!
 
 The `[,main]` tag is optional, and should only be specified for a single service. The service tagged with this will be hosted at the top end point of your webserver.
 
-All services that are run this way will be hosted on your webserver at the `/<your-service-name-here>` end point.
+All services that are run this way will be hosted on your webserver at the `/<your-service-name-here>/` end point.
 
 ```
 helloworld-web:
