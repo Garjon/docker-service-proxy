@@ -27,15 +27,14 @@ nginx_reverse_proxy:
     - ./nginx_reverse_proxy/active-logs:/var/log/nginx
     - ./nginx_reverse_proxy/active-conf:/etc/nginx/conf.d
 
-###
-## Example usage
-###
 
-#helloworld-web:
-#  image: gjon/helloworld-web
-#  restart: always
-#  environment:
-#    - SERVICE_NAME=helloworld
-#    - SERVICE_TAGS=web,main
-#  ports:
-#    - "80"
+###
+## Example usage, will be accesible by http://<your-server-url>/helloworld/
+###
+helloworld-web:
+  image: gjon/helloworld-web
+  environment:
+    - SERVICE_NAME=helloworld
+    - SERVICE_TAGS=web
+  ports:
+    - "80"

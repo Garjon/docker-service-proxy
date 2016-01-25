@@ -25,7 +25,7 @@ helloworld-web:
   image: gjon/helloworld-web
   environment:
     - SERVICE_NAME=helloworld
-    - SERVICE_TAGS=web,main
+    - SERVICE_TAGS=web
   ports:
     - "80"
 ```
@@ -36,6 +36,8 @@ Once that's configured, a call to Docker Compose will get you underway.
 cd /directory/with/docker-compose/file
 sudo docker-compose up -d
 ```
+
+You should then be able to access the service at `http://<your-server-url>/helloworld/`.
 
 ### Attribution
 This didn't all magically come out of my own head, some "smarter than I" individuals have helped me put this together:
